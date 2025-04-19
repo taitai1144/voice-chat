@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head><title>Sender</title></head>
+<body>
+  <h2>メッセージ送信</h2>
+  <input id="msg" placeholder="ここに入力" size="40">
+  <button onclick="sendMsg()">送信</button>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+    function sendMsg() {
+      const msg = document.getElementById('msg').value;
+      socket.emit('chat message', msg);
+      document.getElementById('msg').value = '';
+    }
+  </script>
+</body>
+</html>
